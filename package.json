@@ -7,6 +7,11 @@
     "type": "git",
     "url": "git+https://github.com/cedrictahina/webpack-front-end-boilerplate.git"
   },
+  "scripts": {
+    "serve": "rimraf ./build/* && webpack",
+    "build": "npm run clean && webpack -p",
+    "clean": "rimraf ./build/*"
+  },
   "keywords": [
     "Front",
     "End",
@@ -20,5 +25,11 @@
   "bugs": {
     "url": "https://github.com/cedrictahina/webpack-front-end-boilerplate/issues"
   },
-  "homepage": "https://github.com/cedrictahina/webpack-front-end-boilerplate#readme"
+  "homepage": "https://github.com/cedrictahina/webpack-front-end-boilerplate#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
+  }
 }
