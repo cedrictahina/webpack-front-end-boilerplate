@@ -6,5 +6,14 @@ export default {
   output: {
     path: path.resolve(__dirname, './build/scripts'),
     filename: 'main.js'
+  },
+  module: {
+    rules: [
+      { 
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: "babel-loader" 
+      }
+    ]
   }
-}
+};
