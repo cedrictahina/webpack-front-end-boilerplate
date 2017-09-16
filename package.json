@@ -1,0 +1,24 @@
+{
+  "name": "webpack-front-end-boilerplate",
+  "version": "1.0.0",
+  "description": "This is a simple front end webpack-based environment boilerplate",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cedrictahina/webpack-front-end-boilerplate.git"
+  },
+  "keywords": [
+    "Front",
+    "End",
+    "Webpack",
+    "Boilerplate",
+    "Starter",
+    "Kit"
+  ],
+  "author": "Cedric Tahina Rasoamanana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cedrictahina/webpack-front-end-boilerplate/issues"
+  },
+  "homepage": "https://github.com/cedrictahina/webpack-front-end-boilerplate#readme"
+}
