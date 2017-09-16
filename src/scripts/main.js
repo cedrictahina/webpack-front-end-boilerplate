@@ -1,3 +1,2 @@
-const array = [1, 2, 3]
+import '../styles/main.scss';
 console.log('My JS Bundle');
-console.log(...array);
