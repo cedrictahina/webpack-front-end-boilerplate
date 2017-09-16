@@ -23,13 +23,27 @@ export default {
           use: ['css-loader', 'sass-loader'],
           publicPath: '/build/styles'
         })
-      }
+      },
+      { 
+        test: /\.pug$/,
+        use: [
+          {
+            loader:'html-loader'
+          },
+          {
+            loader: 'pug-html-loader',
+            options: {
+              pretty: true
+            }
+          }
+        ]                
+      }    
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './src/views/index.html'
+      template: './src/views/index.pug'
     }),
     new ExtractTextPlugin({
       filename: './styles/main.css'
