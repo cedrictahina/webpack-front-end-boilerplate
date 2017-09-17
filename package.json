@@ -8,8 +8,8 @@
     "url": "git+https://github.com/cedrictahina/webpack-front-end-boilerplate.git"
   },
   "scripts": {
-    "serve": "webpack-dev-server --hot --inline",
-    "build": "npm run clean && NODE_ENV=production webpack -p",
+    "dev": "webpack-dev-server --env development --hot --inline",
+    "prod": "npm run clean && webpack --env production -p",
     "clean": "rimraf ./build/*"
   },
   "keywords": [
@@ -40,6 +40,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.8.2"
+    "webpack-dev-server": "^2.8.2",
+    "webpack-merge": "^4.1.0"
   }
 }
