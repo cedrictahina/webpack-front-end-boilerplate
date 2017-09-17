@@ -4,6 +4,7 @@ import {
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import fs from 'fs';
 import webpack from 'webpack';
+import data from '../src/data/db';
 
 export const config = {
   context: PATH.app,
@@ -53,7 +54,8 @@ export const loadPUG = () => {
           {
             loader: 'pug-html-loader',
             options: {
-              pretty: true
+              pretty: true,
+              data: { db : data }
             }
           }
         ]

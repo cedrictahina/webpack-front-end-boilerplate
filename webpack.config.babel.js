@@ -13,7 +13,6 @@ const devConfig = merge([
   }),
   dev.loadCSS()  
 ]);
-
 const prodConfig = merge([
   common.config,
   common.loadJS(),

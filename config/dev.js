@@ -40,24 +40,3 @@ export const loadJS = () => ({
     }],
   },
 });
-
-export const loadPug = () => ({
-  module: {
-    rules: [{
-      test: /\.pug$/,
-      use: [{
-          loader: 'html-loader',
-          options: {
-            minimize: false
-          }
-        },
-        {
-          loader: 'pug-html-loader',
-          options: {
-            pretty: true
-          }
-        }
-      ]
-    }],
-  },
-});
