@@ -1,69 +1,27 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import ExtractTextPlugin from 'extract-text-webpack-plugin'; 
-import webpack from 'webpack';
-import path from 'path';
+import merge from 'webpack-merge';
+import * as common from './config/common';
+import * as dev from './config/dev';
+import * as prod from './config/prod';
 
-console.log('env' + process.env.NODE_ENV);
-const isProd = process.env.NODE_ENV === 'production'; // true or false
-var cssDev = ['style-loader', 'css-loader', 'sass-loader'];
-var cssProd = ExtractTextPlugin.extract({
-  fallback: 'style-loader',
-  use: ['css-loader', 'sass-loader'],
-  publicPath: '/build/styles'
-});
-var cssConfig = isProd ? cssProd : cssDev
+const devConfig = merge([
+  common.config,
+  common.loadJS(),
+  common.loadPUG(),
+  dev.server({
+    host: process.env.HOST,
+    port: process.env.PORT,
+  }),
+  dev.loadCSS()  
+]);
 
-export default {
-  entry: './src/scripts/main.js',
-  output: {
-    path: path.resolve(__dirname, './build'),
-    filename: 'scripts/main.js'
-  },
-  module: {
-    rules: [
-      { 
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: "babel-loader" 
-      },
-      { 
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: cssProd
-      },
-      { 
-        test: /\.pug$/,
-        use: [
-          {
-            loader:'html-loader',
-            options: {
-              minimize: false
-            }
-          },
-          {
-            loader: 'pug-html-loader',
-            options: {
-              pretty: true
-            }
-          }
-        ]                
-      }    
-    ]
-  },
-  devServer: {
-    contentBase: path.join(__dirname, 'build'),
-    open: true
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: './src/views/index.pug'
-    }),
-    new ExtractTextPlugin({
-      filename: 'styles/main.css',
-      disable: !isProd,
-      allChunks: true
-    })
-    // new webpack.NamedModulesPlugin()
-  ]
+const prodConfig = merge([
+  common.config,
+  common.loadJS(),
+  common.loadPUG(),
+  prod.extractCSS()  
+]);
+
+export default (env) => {
+  if (env === 'production') return prodConfig
+  return devConfig;
 };
