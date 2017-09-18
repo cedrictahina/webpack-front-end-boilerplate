@@ -5,7 +5,7 @@ import * as prod from './config/prod';
 
 const devConfig = merge([
   common.config,
-  common.loadJS(),
+  common.loadJS({ lintOptions: dev.lintJSOptions}),
   common.loadPUG(),
   dev.server({
     host: process.env.HOST,
@@ -13,9 +13,10 @@ const devConfig = merge([
   }),
   dev.loadCSS()  
 ]);
+
 const prodConfig = merge([
   common.config,
-  common.loadJS(),
+  common.loadJS({ lintOptions: prod.lintJSOptions}),
   common.loadPUG(),
   prod.extractCSS()  
 ]);

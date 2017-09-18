@@ -59,13 +59,10 @@ export const loadCSS = () => ({
   },
 });
 
-
-export const loadJS = () => ({
-  module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      use: "babel-loader"
-    }],
-  },
-});
+export const lintJSOptions = {
+  emitWarning: true,
+  failOnWarning: false,
+  failOnError: false,
+  cache: true,
+  fix: true
+};

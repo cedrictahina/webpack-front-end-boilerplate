@@ -39,15 +39,7 @@ export const loadCSS = () => ({
   },
 });
 
-const lintJSOptions = {
-  emitWarning: true,
-  failOnWarning: false,
-  failOnError: false,
-  cache: true,
-  fix: true
-};
-
-export const loadJS = () => ({
+export const loadJS = ({ lintOptions } = {}) => ({
   module: {
     rules: [{
       test: /\.js$/,
@@ -57,7 +49,7 @@ export const loadJS = () => ({
         "babel-loader",
         { 
           loader: "eslint-loader",
-          options: lintJSOptions
+          options: lintOptions
         }
       ],
     }],

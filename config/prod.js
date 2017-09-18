@@ -43,3 +43,11 @@ export const extractCSS = () => {
     plugins: [plugin]
   };
 };
+
+export const lintJSOptions = {
+  emitWarning: true,
+  failOnWarning: false,
+  failOnError: true,
+  cache: true,
+  fix: true
+};
