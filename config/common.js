@@ -12,7 +12,9 @@ export const config = {
   output: {
     path: `${PATH.build}`,
     filename: 'scripts/[name].[hash:8].js'
-  }
+  },
+  devtool: 'source-map'
+  
 };
 
 export const loadCSS = () => ({
@@ -20,7 +22,19 @@ export const loadCSS = () => ({
     rules: [{
       test: /\.scss$/,
       include: PATH.app,
-      use: ['style-loader', 'css-loader', 'sass-loader']
+      use: ['style-loader',
+      { 
+        loader: 'css-loader',
+        options: {
+          sourceMap: true
+        }
+      },
+      {
+        loader: 'sass-loader',
+        options: {
+          sourceMap: true
+        }
+      }]
     }],
   },
 });

@@ -2,6 +2,7 @@ import {
   PATH
 } from './constants';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import autoprefixer from 'autoprefixer';
 
 export const config = ({
   output: {
@@ -21,7 +22,20 @@ export const extractCSS = () => {
         include: PATH.app,
         use: plugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader'],
+          use: [
+            {
+              loader: 'css-loader',
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [autoprefixer]
+              }
+            },
+            {
+              loader: 'sass-loader'
+            }
+          ],
           publicPath: '/build/styles'
         })
       }, ],

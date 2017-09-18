@@ -1,6 +1,8 @@
 import {
   PATH
 } from './constants';
+import autoprefixer from 'autoprefixer';
+
 
 export const server = ({
   host,
@@ -26,10 +28,37 @@ export const loadCSS = () => ({
     rules: [{
       test: /\.scss$/,
       include: PATH.app,
-      use: ['style-loader', 'css-loader', 'sass-loader'],
+      use: [
+        {
+          loader: 'style-loader',
+          options: {
+            sourceMap: true
+          }
+        },
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: () => [autoprefixer],
+            sourceMap: true
+          },
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
+        }
+      ],
     }],
   },
 });
+
 
 export const loadJS = () => ({
   module: {
