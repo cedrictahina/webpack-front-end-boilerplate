@@ -1,22 +1,14 @@
-import {
-  PATH
-} from './constants';
 import fs from 'fs';
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import StylelintPlugin from 'stylelint-webpack-plugin';
+import { PATH } from './constants';
 import data from '../src/data/db';
 
-const lintStylesOptions = {
-  context: path.resolve(__dirname, `${PATH.app}/styles`),
-  syntax: 'scss',
-  emitErrors: false
-};
-
 export const config = {
-  context: PATH.app,
-  entry: `${PATH.app}/scripts/main.js`,
+  context: PATH.src,
+  entry: `${PATH.src}/scripts/main.js`,
   output: {
     path: `${PATH.build}`,
     filename: 'scripts/[name].[hash:8].js'
@@ -27,11 +19,17 @@ export const config = {
   ]  
 };
 
-export const loadCSS = () => ({
+const lintStylesOptions = {
+  context: path.resolve(__dirname, `${PATH.src}/styles`),
+  syntax: 'scss',
+  emitErrors: false
+};
+
+export const loadStyles = () => ({
   module: {
     rules: [{
       test: /\.scss$/,
-      include: PATH.app,
+      include: PATH.src,
       use: ['style-loader',
       { 
         loader: 'css-loader',
@@ -49,7 +47,7 @@ export const loadCSS = () => ({
   },
 });
 
-export const loadJS = ({ lintOptions } = {}) => ({
+export const loadScripts = ({ lintOptions } = {}) => ({
   module: {
     rules: [{
       test: /\.js$/,
@@ -66,8 +64,8 @@ export const loadJS = ({ lintOptions } = {}) => ({
   },
 });
 
-export const loadPUG = () => {
-  const views = fs.readdirSync(`${PATH.app}/views`)
+export const loadViews = () => {
+  const views = fs.readdirSync(`${PATH.src}/views`)
     .filter(function (file) {
       return file.substr(-4) === '.pug';
     })

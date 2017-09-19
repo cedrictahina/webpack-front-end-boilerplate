@@ -2,7 +2,7 @@ import {
   PATH
 } from './constants';
 import autoprefixer from 'autoprefixer';
-
+import api from '../src/server/api';
 
 export const server = ({
   host,
@@ -16,20 +16,22 @@ export const server = ({
     host,
     port,
     open: true,
-    // Display only errors to reduce the amount of output.
     stats: 'errors-only',
-    watchContentBase: true
-
+    watchContentBase: true,
+    historyApiFallback: true,
+    setup(app) {
+      api(app);
+    }
   }
 });
 
-export const loadCSS = () => ({
+
+export const loadStyles = () => ({
   module: {
     rules: [{
       test: /\.scss$/,
-      include: PATH.app,
-      use: [
-        {
+      include: PATH.src,
+      use: [{
           loader: 'style-loader',
           options: {
             sourceMap: true
@@ -59,7 +61,7 @@ export const loadCSS = () => ({
   },
 });
 
-export const lintJSOptions = {
+export const lintScriptsOptions = {
   emitWarning: true,
   failOnWarning: false,
   failOnError: false,

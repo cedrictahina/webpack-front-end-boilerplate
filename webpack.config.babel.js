@@ -5,19 +5,19 @@ import * as prod from './config/prod';
 
 const devConfig = merge([
   common.config,
-  common.loadJS({ lintOptions: dev.lintJSOptions}),
-  common.loadPUG(),
+  common.loadScripts({ lintOptions: dev.lintScriptsOptions}),
+  common.loadViews(),
   dev.server({
     host: process.env.HOST,
     port: process.env.PORT,
   }),
-  dev.loadCSS()  
+  dev.loadStyles()  
 ]);
 
 const prodConfig = merge([
   common.config,
-  common.loadJS({ lintOptions: prod.lintJSOptions}),
-  common.loadPUG(),
+  common.loadScripts({ lintOptions: prod.lintScriptsOptions}),
+  common.loadViews(),
   prod.extractCSS()  
 ]);
 

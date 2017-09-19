@@ -19,7 +19,7 @@ export const extractCSS = () => {
     module: {
       rules: [{
         test: /\.scss$/,
-        include: PATH.app,
+        include: PATH.src,
         use: plugin.extract({
           fallback: 'style-loader',
           use: [
@@ -44,7 +44,7 @@ export const extractCSS = () => {
   };
 };
 
-export const lintJSOptions = {
+export const lintScriptsOptions = {
   emitWarning: true,
   failOnWarning: false,
   failOnError: true,
