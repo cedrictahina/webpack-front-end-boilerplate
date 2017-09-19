@@ -51,3 +51,23 @@ export const lintScriptsOptions = {
   cache: true,
   fix: true
 };
+
+export const optimizeImages = () => ({
+  module: {
+    rules: [
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: {
+          loader: 'image-webpack-loader',
+          options: {
+            progressive: true,
+            pngquant: {
+              quality: '65-90',
+              speed: 4,
+            }
+          }
+        }
+      }
+    ]
+  }
+});

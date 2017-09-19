@@ -22,6 +22,7 @@ const prodConfig = merge([
   common.loadViews(),
   common.loadFonts(),
   common.loadImages({ isProd: true }),
+  prod.optimizeImages(),
   prod.extractCSS()  
 ]);
 
