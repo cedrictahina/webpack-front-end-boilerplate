@@ -1,10 +1,18 @@
 import {
   PATH
 } from './constants';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import fs from 'fs';
+import path from 'path';
 import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import StylelintPlugin from 'stylelint-webpack-plugin';
 import data from '../src/data/db';
+
+const lintStylesOptions = {
+  context: path.resolve(__dirname, `${PATH.app}/styles`),
+  syntax: 'scss',
+  emitErrors: false
+};
 
 export const config = {
   context: PATH.app,
@@ -13,8 +21,10 @@ export const config = {
     path: `${PATH.build}`,
     filename: 'scripts/[name].[hash:8].js'
   },
-  devtool: 'source-map'
-  
+  devtool: 'source-map',
+  plugins: [
+    new StylelintPlugin(lintStylesOptions),
+  ]  
 };
 
 export const loadCSS = () => ({
