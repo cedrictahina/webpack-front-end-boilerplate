@@ -8,8 +8,8 @@
     "url": "git+https://github.com/cedrictahina/webpack-front-end-boilerplate.git"
   },
   "scripts": {
-    "dev": "nodemon --watch webpack.config.babel.js --watch src/data  --exec \"webpack-dev-server --env development --hot --inline\"",
-    "prod": "npm run clean && webpack --env production -p",
+    "serve": "nodemon --watch webpack.config.babel.js --watch src/data  --exec \"webpack-dev-server --env development --hot --inline\"",
+    "build": "npm run clean && webpack --env production -p",
     "clean": "rimraf ./build/*"
   },
   "keywords": [
