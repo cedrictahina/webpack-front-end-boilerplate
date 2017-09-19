@@ -8,6 +8,7 @@ const devConfig = merge([
   common.loadScripts({ lintOptions: dev.lintScriptsOptions}),
   common.loadViews(),
   common.loadFonts(),
+  common.loadImages(),
   dev.server({
     host: process.env.HOST,
     port: process.env.PORT,
@@ -20,6 +21,7 @@ const prodConfig = merge([
   common.loadScripts({ lintOptions: prod.lintScriptsOptions}),
   common.loadViews(),
   common.loadFonts(),
+  common.loadImages({ isProd: true }),
   prod.extractCSS()  
 ]);
 

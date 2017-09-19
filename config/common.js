@@ -117,3 +117,20 @@ export const loadFonts = ({ include, exclude, options } = {}) => ({
     ],
   },
 });
+
+export const loadImages = ({ isProd } = { isProd: false }) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|svg)$/,
+        include: PATH.src,
+        use: {
+          loader: isProd ? 'file-loader' : 'url-loader',
+          options: {
+            name: 'images/[name].[ext]',
+          },
+        },
+      },
+    ],
+  },
+});
