@@ -25,6 +25,7 @@ const prodConfig = merge([
   prod.optimizeImages(),
   prod.extractStyles(),
   prod.purifyStyles(),
+  prod.generateCriticalStyle()
 ]);
 
 export default (env) => {

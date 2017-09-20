@@ -2,9 +2,10 @@ import {
   PATH
 } from './constants';
 import glob from 'glob';
-import path from 'path';
+import fs from 'fs';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import PurifyCSSPlugin  from 'purifycss-webpack';
+import { CriticalPlugin } from 'webpack-plugin-critical';
 import autoprefixer from 'autoprefixer';
 
 export const config = ({
@@ -84,3 +85,21 @@ export const purifyStyles = () => ({
     })
   ]
 });
+
+export const generateCriticalStyle = () => {
+  const views = fs.readdirSync(`${PATH.src}/views`)
+  .filter(function (file) {
+    return file.substr(-4) === '.pug';
+  })
+  .map(file => file.replace('.pug', '.html'));
+  return {
+    plugins: views.map(view => {
+      return new CriticalPlugin({
+        src: view,
+        inline: true,
+        minify: true,
+        dest: view
+      })
+    })
+  }
+};
