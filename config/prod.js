@@ -1,7 +1,10 @@
 import {
   PATH
 } from './constants';
+import glob from 'glob';
+import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import PurifyCSSPlugin  from 'purifycss-webpack';
 import autoprefixer from 'autoprefixer';
 
 export const config = ({
@@ -10,7 +13,7 @@ export const config = ({
   }
 });
 
-export const extractCSS = () => {
+export const extractStyles = () => {
   const plugin = new ExtractTextPlugin({
     filename: 'styles/[name].[contenthash:8].css',
     allChunks: true
@@ -70,4 +73,14 @@ export const optimizeImages = () => ({
       }
     ]
   }
+});
+
+export const purifyStyles = () => ({
+  plugins: [
+    new PurifyCSSPlugin({
+      paths: glob.sync(`${PATH.src}/**/*.pug`, { nodir: true }),
+      styleExtensions: ['.css', '.scss'],
+      minimize: true
+    })
+  ]
 });

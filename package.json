@@ -46,6 +46,8 @@
     "postcss-loader": "^2.0.6",
     "pug": "^2.0.0-rc.4",
     "pug-html-loader": "^1.1.5",
+    "purify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "stylelint": "^8.1.1",

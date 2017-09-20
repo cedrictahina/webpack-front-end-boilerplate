@@ -23,7 +23,8 @@ const prodConfig = merge([
   common.loadFonts(),
   common.loadImages({ isProd: true }),
   prod.optimizeImages(),
-  prod.extractCSS()  
+  prod.extractStyles(),
+  prod.purifyStyles(),
 ]);
 
 export default (env) => {
