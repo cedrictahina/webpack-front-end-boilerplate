@@ -1,0 +1,5 @@
+// Fix the path resolution on fonts loaded by bootstrap
+$bootstrap-sass-asset-helper: true;
+
+// import the sass from bootstrap node_modules
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
