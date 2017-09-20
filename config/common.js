@@ -22,7 +22,9 @@ export const config = {
 const lintStylesOptions = {
   context: path.resolve(__dirname, `${PATH.src}/styles`),
   syntax: 'scss',
-  emitErrors: false
+  emitErrors: false,
+  fix: true,
+  failOnError: false
 };
 
 export const loadStyles = () => ({
