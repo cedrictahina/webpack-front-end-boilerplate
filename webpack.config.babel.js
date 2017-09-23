@@ -21,7 +21,7 @@ const prodConfig = merge([
   prod.loadScripts(),
   common.loadViews(),
   common.loadFonts(),
-  common.loadImages({ isProd: true }),
+  common.loadImages(),
   prod.optimizeImages(),
   prod.extractStyles(),
   prod.purifyStyles(),

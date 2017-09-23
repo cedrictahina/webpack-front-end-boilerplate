@@ -8,7 +8,7 @@ import data from '../src/data/db';
 
 export const config = {
   context: PATH.src,
-  entry: `${PATH.src}/scripts/main.js`,
+  entry: `${PATH.src}/entry.js`,  
   output: {
     path: `${PATH.build}`,
     filename: 'scripts/[name].[hash:8].js'
@@ -95,7 +95,7 @@ export const loadFonts = ({ include, exclude, options } = {}) => ({
         use: {
           loader: 'file-loader',
           options: {
-            name: 'fonts/[name].[hash:8].[ext]',
+            name: 'fonts/[name].[hash:8].[ext]'
           },
         },
       },
@@ -103,14 +103,14 @@ export const loadFonts = ({ include, exclude, options } = {}) => ({
   },
 });
 
-export const loadImages = ({ isProd } = { isProd: false }) => ({
+export const loadImages = () => ({
   module: {
     rules: [
       {
-        test: /\.(png|jpg|svg)$/,
+        test: /\.(jpe?g|png|gif|svg)$/i,
         include: PATH.src,
         use: {
-          loader: isProd ? 'file-loader' : 'url-loader',
+          loader: 'file-loader',
           options: {
             name: 'images/[name].[ext]',
           },
