@@ -40,7 +40,7 @@ export const extractStyles = () => {
               loader: 'sass-loader'
             }
           ],
-          publicPath: '/build/styles'
+          publicPath: '../'
         })
       }, ],
     },
