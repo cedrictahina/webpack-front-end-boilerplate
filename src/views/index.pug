@@ -1,9 +1,4 @@
-doctype html
-html(lang="en")
-  head
-    title= 'Webpack Front-End Boilerplate'
-  body
-    h1=db.title
-    a(href='contact.html') Go to page content
-    div
-      img(src='../images/awesome-webpack.png' width='200' height='auto')
+extends _base/layout.pug
+block main
+  p Hello
+  img(src='../images/awesome-webpack.png' alt='Hello')
