@@ -68,3 +68,20 @@ export const lintScriptsOptions = {
   cache: true,
   fix: true
 };
+
+export const loadScripts = () => ({
+  module: {
+    rules: [{
+      test: /\.js$/,
+      enforce: 'pre',
+      exclude: /node_modules/,
+      use: [
+        "babel-loader",
+        { 
+          loader: "eslint-loader",
+          options: lintScriptsOptions
+        }
+      ],
+    }],
+  }
+});

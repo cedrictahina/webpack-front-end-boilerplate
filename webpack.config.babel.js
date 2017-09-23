@@ -5,7 +5,7 @@ import * as prod from './config/prod';
 
 const devConfig = merge([
   common.config,
-  common.loadScripts({ lintOptions: dev.lintScriptsOptions}),
+  dev.loadScripts(),
   common.loadViews(),
   common.loadFonts(),
   common.loadImages(),
@@ -18,7 +18,7 @@ const devConfig = merge([
 
 const prodConfig = merge([
   common.config,
-  common.loadScripts({ lintOptions: prod.lintScriptsOptions}),
+  prod.loadScripts(),
   common.loadViews(),
   common.loadFonts(),
   common.loadImages({ isProd: true }),

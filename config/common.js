@@ -49,23 +49,6 @@ export const loadStyles = () => ({
   },
 });
 
-export const loadScripts = ({ lintOptions } = {}) => ({
-  module: {
-    rules: [{
-      test: /\.js$/,
-      enforce: 'pre',
-      exclude: /node_modules/,
-      use: [
-        "babel-loader",
-        { 
-          loader: "eslint-loader",
-          options: lintOptions
-        }
-      ],
-    }],
-  },
-});
-
 export const loadViews = () => {
   const views = fs.readdirSync(`${PATH.src}/views`)
     .filter(function (file) {

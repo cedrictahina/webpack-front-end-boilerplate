@@ -103,3 +103,13 @@ export const generateCriticalStyle = () => {
     })
   }
 };
+
+export const loadScripts = () => ({
+  module: {
+    rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: ["babel-loader"]
+    }],
+  }
+});
