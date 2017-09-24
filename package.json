@@ -12,7 +12,7 @@
     "build": "npm run clean && npm run eslint && npm run stylelint && webpack --env production -p; exit 0",
     "clean": "rimraf ./build/*",
     "eslint": "eslint src/scripts --fix ; exit 0",
-    "stylelint": "stylelint src/**/*.scss --fix ; exit 0"
+    "stylelint": "stylelint src/styles/*.scss src/styles/**/*.scss --fix ; exit 0"
   },
   "keywords": [
     "Front",
@@ -57,6 +57,7 @@
     "stylelint": "^8.1.1",
     "stylelint-config-sass-guidelines": "^3.1.0",
     "stylelint-config-standard": "^17.0.0",
+    "stylelint-order": "^0.6.0",
     "stylelint-scss": "^2.1.0",
     "stylelint-webpack-plugin": "^0.9.0",
     "webpack": "^3.6.0",

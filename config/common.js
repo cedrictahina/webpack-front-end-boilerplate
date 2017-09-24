@@ -6,6 +6,13 @@ import StylelintPlugin from 'stylelint-webpack-plugin';
 import { PATH } from './constants';
 import data from '../src/data/db';
 
+const lintStylesOptions = {
+  context: path.resolve(__dirname, `${PATH.src}/styles`),
+  syntax: 'scss',
+  fix: false,
+  failOnError: false
+};
+
 export const config = {
   context: PATH.src,
   entry: `${PATH.src}/entry.js`,  
@@ -19,13 +26,7 @@ export const config = {
   ]  
 };
 
-const lintStylesOptions = {
-  context: path.resolve(__dirname, `${PATH.src}/styles`),
-  syntax: 'scss',
-  emitErrors: false,
-  fix: true,
-  failOnError: false
-};
+
 
 export const loadStyles = () => ({
   module: {
