@@ -1,27 +1,28 @@
+- og = seo.og
 meta(charset="utf-8")
 meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
-meta(name="description", content="")
-meta(name="keywords", content="")
+meta(name="description", content=seo.description)
+meta(name="keywords", content=seo.keywords)
 meta(name="format-detection", content="telephone=no")
-title=title
+title=project.title
 
 //- Facebook metas
-meta(property="fb:app_id" content="")
-meta(property="og:url" content="")
-meta(property="og:type" content="")
-meta(property="og:locale" content="")
-meta(property="og:title" content="")
-meta(property="og:description" content="")
-meta(property="og:image" content="")
-meta(property="og:image:type" content="")
+meta(property="fb:app_id" content=og.appId)
+meta(property="og:url" content=og.url)
+meta(property="og:type" content=og.type)
+meta(property="og:locale" content=og.locale)
+meta(property="og:title" content=project.title)
+meta(property="og:description" content=seo.description)
+meta(property="og:image" content=og.image)
+meta(property="og:image:type" content=og.imageType)
 
 //- Twitter metas
-meta(name="twitter:card" content="")
-meta(name="twitter:site" content="")
-meta(name="twitter:title" content="")
-meta(name="twitter:description" content="")
-meta(name="twitter:image" content="")
-meta(name="twitter:image:alt" content="")
+//- meta(name="twitter:card" content="")
+//- meta(name="twitter:site" content="")
+//- meta(name="twitter:title" content="")
+//- meta(name="twitter:description" content="")
+//- meta(name="twitter:image" content="")
+//- meta(name="twitter:image:alt" content="")
 
 //- Favicon
-link(rel="icon", type="image/png" href="images/favicon.png")
+link(rel="icon", type="image/png" href="images/front-end-boilerplate.png")

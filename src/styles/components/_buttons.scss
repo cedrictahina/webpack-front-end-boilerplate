@@ -1,0 +1,31 @@
+.btn {
+  border-color: $primary-color;
+  border-radius: 0.25em;
+  border-style: solid;
+  border-width: 1px;
+  color: $primary-color;
+  display: inline-block;
+  font-size: 0.85em;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  padding: 0.55em 0.95em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s, background-color 0.3s, border 0.3s;
+
+  &:hover {
+    background-color: $primary-color;
+    border-color: $color-white;
+    color: $color-white;
+  }
+
+  &-header {
+    border-color: #fff;
+    color: #fff;
+
+    &:hover {
+      background-color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+}
