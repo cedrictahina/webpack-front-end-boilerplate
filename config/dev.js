@@ -1,6 +1,7 @@
 import {
   PATH
 } from './constants';
+import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import api from '../src/server/api';
 
@@ -25,6 +26,23 @@ export const server = ({
   }
 });
 
+export const initBrowserSync = () => ({
+  plugins: [
+    new BrowserSyncPlugin(
+      {
+        // browse to http://localhost:3000/ during development 
+        host: 'localhost',
+        port: 3000,
+        // proxy  webpack dev Server endpoint through browsersync
+        proxy: 'http://localhost:8080/'
+      },
+      {
+        // handle reload when files change
+        reload: true
+      }
+    )
+  ]
+});
 
 export const loadStyles = () => ({
   module: {
