@@ -4,6 +4,7 @@ $black: #37474f;
 $color-white: #fff;
 
 @import './fonts';
+@import 'vendors/main';
 @import 'base/main';
 @import 'components/main';
 
@@ -65,4 +66,8 @@ code {
   @media screen and (max-width: 768px) {
     display: block;
   }
+}
+
+.logo {
+  background: url('../icons/facebook.svg');
 }

@@ -1,7 +1,12 @@
+import $ from 'jquery';
+import 'slick-carousel';
+window.$ = $;
 class Main {
   init() {
-    const body = document.querySelector('body');
-    console.log(body);
+    $('.js-features').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1
+    });
   }
 }
 

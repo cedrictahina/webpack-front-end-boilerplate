@@ -127,19 +127,3 @@ export const loadImages = () => ({
     }, ],
   },
 }); 
-
-export const svgoConfigOptions = {
-  plugins: [
-    {
-      removeTitle: true
-    },
-    {
-      convertColors: {
-        shorthex: false
-      }
-    },
-    {
-      convertPathData: false
-    }
-  ]  
-};

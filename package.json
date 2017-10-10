@@ -66,5 +66,9 @@
     "webpack-dev-server": "^2.8.2",
     "webpack-merge": "^4.1.0",
     "webpack-plugin-critical": "^1.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "slick-carousel": "^1.7.1"
   }
 }

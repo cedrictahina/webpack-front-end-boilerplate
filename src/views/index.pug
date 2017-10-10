@@ -2,3 +2,9 @@ extends _base/layout.pug
 block main
   include _index/about.pug
   include _index/installation.pug
+  svg
+    use(xlink:href=isProd ? 'sprite.svg#facebook' : '#facebook')
+  svg
+    use(xlink:href=isProd ? 'sprite.svg#twitter' : '#twitter')
+
+  p= env

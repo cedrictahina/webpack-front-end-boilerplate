@@ -7,6 +7,7 @@ import autoprefixer from 'autoprefixer';
 import api from '../src/server/api';
 import { svgoConfigOptions } from './common';
 
+
 export const server = ({
   host,
   port
