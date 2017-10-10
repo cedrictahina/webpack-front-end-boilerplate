@@ -9,7 +9,7 @@ import PurifyCSSPlugin  from 'purifycss-webpack';
 import { CriticalPlugin } from 'webpack-plugin-critical';
 import SpriteLoaderPlugin from 'svg-sprite-loader/plugin';
 import autoprefixer from 'autoprefixer';
-
+import { svgoConfigOptions } from './common';
 export const config = ({
   output: {
     filename: './scripts/[name].js',
@@ -110,7 +110,6 @@ export const loadScripts = () => ({
   module: {
     rules: [{
       test: /\.js$/,
-      exclude: /node_modules/,
       use: ["babel-loader"]
     }],
   }
@@ -131,7 +130,8 @@ export const generateSvgIcons = () => ({
             }
           },
           {
-            loader: 'svgo-loader'
+            loader: 'svgo-loader',
+            options: svgoConfigOptions
           }
         ]
       }

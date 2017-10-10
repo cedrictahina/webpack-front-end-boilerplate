@@ -5,7 +5,7 @@ import path from 'path';
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import api from '../src/server/api';
-
+import { svgoConfigOptions } from './common';
 
 export const server = ({
   host,
@@ -93,8 +93,6 @@ export const loadScripts = () => ({
   module: {
     rules: [{
       test: /\.js$/,
-      enforce: 'pre',
-      exclude: /node_modules/,
       use: [
         "babel-loader",
         { 
@@ -114,7 +112,10 @@ export const generateSvgIcons = () => ({
         include: path.resolve(__dirname, `${PATH.src}/icons`),
         use: [
           'svg-sprite-loader',
-          'svgo-loader'
+          {
+            loader: 'svgo-loader',
+            options: svgoConfigOptions
+          }
         ]
       }
     ]
