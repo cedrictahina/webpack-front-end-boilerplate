@@ -3,11 +3,13 @@ import {
 } from './constants';
 import glob from 'glob';
 import fs from 'fs';
+import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import PurifyCSSPlugin  from 'purifycss-webpack';
 import { CriticalPlugin } from 'webpack-plugin-critical';
+import SpriteLoaderPlugin from 'svg-sprite-loader/plugin';
 import autoprefixer from 'autoprefixer';
-
+import { svgoConfigOptions } from './common';
 export const config = ({
   output: {
     filename: './scripts/[name].js',
@@ -108,8 +110,34 @@ export const loadScripts = () => ({
   module: {
     rules: [{
       test: /\.js$/,
-      exclude: /node_modules/,
       use: ["babel-loader"]
     }],
   }
+});
+
+export const generateSvgIcons = () => ({
+  module: {
+    rules: [
+      {
+        test: /\.svg$/,
+        include: path.resolve(__dirname, `${PATH.src}/icons`),
+        use: [
+          { 
+            loader: 'svg-sprite-loader',
+            options: {
+              extract: true,
+              spriteFilename: 'sprite2.svg'
+            }
+          },
+          {
+            loader: 'svgo-loader',
+            options: svgoConfigOptions
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new SpriteLoaderPlugin()
+  ]
 });
