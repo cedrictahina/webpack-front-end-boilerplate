@@ -3,7 +3,9 @@ import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import StylelintPlugin from 'stylelint-webpack-plugin';
-import { PATH } from './constants';
+import {
+  PATH
+} from './constants';
 import data from '../src/data/db';
 
 const lintStylesOptions = {
@@ -15,7 +17,7 @@ const lintStylesOptions = {
 
 export const config = {
   context: PATH.src,
-  entry: `${PATH.src}/entry.js`,  
+  entry: `${PATH.src}/entry.js`,
   output: {
     path: `${PATH.build}`,
     filename: 'scripts/[name].[hash:8].js'
@@ -23,7 +25,7 @@ export const config = {
   devtool: 'source-map',
   plugins: [
     new StylelintPlugin(lintStylesOptions),
-  ]  
+  ]
 };
 
 
@@ -34,23 +36,24 @@ export const loadStyles = () => ({
       test: /\.scss$/,
       include: PATH.src,
       use: ['style-loader',
-      { 
-        loader: 'css-loader',
-        options: {
-          sourceMap: true
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true
+          }
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
         }
-      },
-      {
-        loader: 'sass-loader',
-        options: {
-          sourceMap: true
-        }
-      }]
+      ]
     }],
   },
 });
 
-export const loadViews = () => {
+export const loadViews = ({ isProd } = { isProd : false }) => {
   const views = fs.readdirSync(`${PATH.src}/views`)
     .filter(function (file) {
       return file.substr(-4) === '.pug';
@@ -70,7 +73,10 @@ export const loadViews = () => {
             loader: 'pug-html-loader',
             options: {
               pretty: true,
-              data: { db : data }
+              data: {
+                db: data,
+                isProd
+              }
             }
           }
         ]
@@ -85,38 +91,39 @@ export const loadViews = () => {
   }
 };
 
-export const loadFonts = ({ include, exclude, options } = {}) => ({
+export const loadFonts = ({
+  include,
+  exclude,
+  options
+} = {}) => ({
   module: {
-    rules: [
-      {
-        // Capture eot, ttf, woff, and woff2
-        test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+    rules: [{
+      // Capture eot, ttf, woff, and woff2
+      test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
 
-        include: PATH.src,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: 'fonts/[name].[hash:8].[ext]'
-          },
+      include: PATH.src,
+      use: {
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[hash:8].[ext]'
         },
       },
-    ],
+    }, ],
   },
 });
 
 export const loadImages = () => ({
   module: {
-    rules: [
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        include: PATH.src,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: 'images/[name].[ext]',
-          },
+    rules: [{
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      include: PATH.src,
+      exclude: `${PATH.src}/icons`,
+      use: {
+        loader: 'file-loader',
+        options: {
+          name: 'images/[name].[ext]',
         },
       },
-    ],
+    }, ],
   },
-});
+}); 

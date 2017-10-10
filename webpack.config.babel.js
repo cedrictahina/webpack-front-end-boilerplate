@@ -6,6 +6,7 @@ import * as prod from './config/prod';
 const devConfig = merge([
   common.config,
   dev.loadScripts(),
+  dev.generateSvgIcons(),
   common.loadViews(),
   common.loadFonts(),
   common.loadImages(),
@@ -20,7 +21,8 @@ const devConfig = merge([
 const prodConfig = merge([
   common.config,
   prod.loadScripts(),
-  common.loadViews(),
+  prod.generateSvgIcons(),
+  common.loadViews({ isProd: true}),
   common.loadFonts(),
   common.loadImages(),
   prod.optimizeImages(),
