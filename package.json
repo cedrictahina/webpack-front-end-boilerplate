@@ -60,6 +60,8 @@
     "stylelint-order": "^0.6.0",
     "stylelint-scss": "^2.1.0",
     "stylelint-webpack-plugin": "^0.9.0",
+    "svg-sprite-loader": "^3.2.6",
+    "svgo-loader": "^1.2.1",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.8.2",
     "webpack-merge": "^4.1.0",
