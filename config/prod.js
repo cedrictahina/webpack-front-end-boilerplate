@@ -62,7 +62,7 @@ export const optimizeImages = () => ({
   module: {
     rules: [
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(gif|png|jpe?g)$/i,
         use: {
           loader: 'image-webpack-loader',
           options: {
@@ -137,7 +137,7 @@ export const generateSvgIcons = () => ({
             loader: 'svg-sprite-loader',
             options: {
               extract: true,
-              spriteFilename: 'sprite2.svg'
+              spriteFilename: 'icons/sprite.svg'
             }
           },
           {
