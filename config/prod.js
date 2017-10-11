@@ -39,7 +39,10 @@ export const extractStyles = () => {
               }
             },
             {
-              loader: 'sass-loader'
+              loader: 'sass-loader',
+              options: {
+                data: "$env: production;"
+              }
             }
           ],
           publicPath: '../'

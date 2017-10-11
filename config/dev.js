@@ -74,7 +74,8 @@ export const loadStyles = () => ({
         {
           loader: 'sass-loader',
           options: {
-            sourceMap: true
+            sourceMap: true,
+            data: "$env: development;"
           }
         }
       ],
