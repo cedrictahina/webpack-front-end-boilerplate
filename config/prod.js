@@ -91,7 +91,10 @@ export const purifyStyles = () => ({
     new PurifyCSSPlugin({
       paths: glob.sync(`${PATH.src}/**/*.pug`, { nodir: true }),
       styleExtensions: ['.css', '.scss'],
-      minimize: true
+      minimize: true,
+      purifyOptions: {
+        whitelist: ['*slick*']
+      }
     })
   ]
 });

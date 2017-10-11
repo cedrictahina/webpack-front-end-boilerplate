@@ -1,3 +1,18 @@
 {
-  "title": "My title here"
+  "project": {
+    "lang": "en",
+    "title": "Initialize - Front-End Boilerplate",
+    "seo": {
+      "description": "A simple webpack based front-end boilerplate",
+      "keywords": "Front-End, Webpack, Boilerplate, Starter-Kit, Javascript, Css, Pug, Cedric Tahina",
+      "og": {
+        "appId": "0000-0000-0000",
+        "url": "www.front-end-boilerplate.github.io",
+        "type": "website",
+        "locale": "en",
+        "image": "image-url",
+        "imageType": "png"
+      }
+    }
+  }
 }
