@@ -1,0 +1,76 @@
+$mq-responsive: true;
+$mq-breakpoints: ( mobile: 320px, mobile-landscape: 480px, tablet: 768px, desktop: 1024px, large-desktop: 1280px);
+$mq-show-breakpoints: ();
+
+// if we are in development environment, show current breakpoint at the top-right corner of the page
+@if ($env == development) {
+  $mq-show-breakpoints: (mobile, mobile-landscape, tablet, desktop, large-desktop);
+}
+
+@import '~sass-mq';
+
+@mixin respond-to($media) {
+  // MOBILES
+  @if $media == portrait-mobiles {
+    @include mq($from: mobile, $until: mobile-landscape) {
+      @content;
+    }
+  }
+
+  @else if $media == landscape-mobiles {
+    @include mq($from: mobile-landscape, $until: tablet) {
+      @content;
+    }
+  }
+
+  @else if $media == all-mobiles {
+    @include mq($from: mobile, $until: tablet) {
+      @content;
+    }
+  }
+
+  // TABLETS
+  @else if $media == portrait-tablets {
+    @include mq($from: mobile-landscape, $until: tablet) {
+      @content;
+    }
+  }
+
+  @else if ($media == tablets) or ($media == landscape-tablets) {
+    @include mq($from: tablet, $until: desktop) {
+      @content;
+    }
+  }
+
+  @else if $media == all-tablets {
+    @include mq($from: mobile-landscape, $until: desktop) {
+      @content;
+    }
+  }
+
+  // DESKTOP
+  @else if $media == desktop {
+    @include mq($from: desktop) {
+      @content;
+    }
+  }
+
+  @else if $media == small-desktop {
+    @include mq($from: desktop, $until: large-desktop) {
+      @content;
+    }
+  }
+
+  @else if $media == large-desktop {
+    @include mq($from: large-desktop) {
+      @content;
+    }
+  }
+
+  // PRINTABLE CONTENT
+  @else if $media == print {
+    @media print {
+      @content;
+    }
+  }
+}

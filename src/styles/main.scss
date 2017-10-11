@@ -3,6 +3,7 @@ $primary-color: #05abe0;
 $black: #37474f;
 $color-white: #fff;
 
+@import 'utilities/main';
 @import './fonts';
 @import 'vendors/main';
 @import 'base/main';
