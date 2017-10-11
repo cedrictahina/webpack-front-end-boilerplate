@@ -40,7 +40,7 @@ export const initBrowserSync = () => ({
       },
       {
         // handle reload when files change
-        reload: true
+        reload: false
       }
     )
   ]
