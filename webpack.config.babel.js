@@ -15,7 +15,7 @@ const devConfig = merge([
     port: process.env.PORT,
   }),
   dev.initBrowserSync(),
-  dev.loadStyles()  
+  dev.loadStyles()
 ]);
 
 const prodConfig = merge([
@@ -32,6 +32,6 @@ const prodConfig = merge([
 ]);
 
 export default (env) => {
-  if (env === 'production') return prodConfig
+  if (env === 'production') return prodConfig;
   return devConfig;
 };
