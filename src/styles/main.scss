@@ -4,7 +4,7 @@ $black: #37474f;
 $color-white: #fff;
 
 @import 'utilities/main';
-@import './fonts';
+@import 'fonts';
 @import 'vendors/main';
 @import 'base/main';
 @import 'components/main';
@@ -58,13 +58,18 @@ code {
   border: 1px solid $primary-color;
   border-radius: 0.3em;
   color: #37474f;
+  display: block;
   font-family: monospace;
   overflow-x: scroll;
   overflow-y: hidden;
   padding: 0.55em;
   white-space: nowrap;
 
-  @media screen and (max-width: 768px) {
-    display: block;
+  @include respond-to('desktop') {
+    display: inline;
+  }
+
+  @include respond-to('tablets') {
+    display: inline;
   }
 }
