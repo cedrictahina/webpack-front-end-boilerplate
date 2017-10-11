@@ -1,0 +1,17 @@
+$separator-color: #e4e6ea;
+
+body {
+  margin: 0;
+}
+
+section {
+  padding: 3.5em 2em;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $separator-color;
+  }
+}
+
+a {
+  cursor: pointer;
+}

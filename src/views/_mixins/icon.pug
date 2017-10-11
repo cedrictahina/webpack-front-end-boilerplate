@@ -1,0 +1,5 @@
+mixin icon(options)
+  - spriteHref = isProd ? 'sprite.svg#' + options.name : '#' + options.name;
+  svg(class='icon icon-' + options.name)
+    use(xlink:href=spriteHref)
+  
