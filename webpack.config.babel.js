@@ -15,6 +15,7 @@ const devConfig = merge([
     port: process.env.PORT,
   }),
   dev.initBrowserSync(),
+  dev.reloadBrowser(),
   dev.loadStyles()
 ]);
 

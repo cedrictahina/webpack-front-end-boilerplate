@@ -3,6 +3,7 @@ import {
 } from './constants';
 import path from 'path';
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
+import ReloadHtmlPlugin from 'reload-html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import api from '../src/server/api';
 import { svgoConfigOptions } from './common';
@@ -21,7 +22,7 @@ export const server = ({
     port,
     open: true,
     stats: 'errors-only',
-    watchContentBase: true,
+    watchContentBase: false,
     historyApiFallback: true,
     setup(app) {
       api(app);
@@ -41,9 +42,15 @@ export const initBrowserSync = () => ({
       },
       {
         // handle reload when files change
-        reload: false
+        reload: true
       }
     )
+  ]
+});
+
+export const reloadBrowser = () => ({
+  plugins: [
+    new ReloadHtmlPlugin()
   ]
 });
 
